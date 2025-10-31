@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comf-IA: Taller Gemini + Apps Script</title>
-    <!-- Cargar Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Cargar Fuente "Inter" -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Cargar Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cargar Fuente "Inter" --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Cargar Fuente "Caveat" para la firma -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Cargar Fuente "Caveat" para la firma --><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
     
     <style>
         /* Tipografía Base */
@@ -102,43 +99,32 @@
 </head>
 <body class="antialiased overflow-hidden h-screen flex flex-col">
 
-    <!-- Encabezado Fijo (Efecto "Vidrio" sutil) -->
-    <header class="bg-gray-950/70 backdrop-blur-md shadow-lg w-full fixed top-0 left-0 z-50 border-b border-gray-800/70">
+    <!-- Encabezado Fijo (Efecto "Vidrio" sutil) --><header class="bg-gray-950/70 backdrop-blur-md shadow-lg w-full fixed top-0 left-0 z-50 border-b border-gray-800/70">
         <nav class="container mx-auto max-w-7xl px-6 py-3 flex justify-between items-center">
             <div class="text-2xl font-extrabold text-white">
                 Comf<span class="text-gradient">IA</span>
             </div>
             <div class="hidden md:flex space-x-6">
-                <!-- LINKS ACTUALIZADOS -->
-                <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors" data-slide="0">Intro</a>
+                <!-- LINKS ACTUALIZADOS --><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors" data-slide="0">Intro</a>
                 <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors" data-slide="3">Componentes</a>
                 <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors" data-slide="6">Demo</a>
                 <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors" data-slide="14">Conclusión</a>
             </div>
-            <!-- Botón de Pantalla Completa -->
-            <button id="fullscreen-btn" title="Maximizar Presentación" class="text-gray-400 hover:text-purple-400 transition-colors ml-6">
-                <!-- Icono de Expandir (Default) -->
-                <svg id="expand-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <!-- Botón de Pantalla Completa --><button id="fullscreen-btn" title="Maximizar Presentación" class="text-gray-400 hover:text-purple-400 transition-colors ml-6">
+                <!-- Icono de Expandir (Default) --><svg id="expand-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 15.75v-4.5m0 4.5h-4.5m4.5 0L15 15" />
                 </svg>
-                <!-- Icono de Minimizar (Oculto) -->
-                <svg id="minimize-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <!-- Icono de Minimizar (Oculto) --><svg id="minimize-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 9L3.75 3.75M9 9h4.5m-4.5 0v4.5m0-4.5L3.75 15M15 9l5.25-5.25M15 9h-4.5m4.5 0v4.5m0-4.5L20.25 15M9 15l-5.25 5.25M9 15h4.5m-4.5 0v-4.5m0 4.5L3.75 9m6 6l5.25 5.25M15 15h-4.5m4.5 0v-4.5m0 4.5L20.25 9" />
                 </svg>
             </button>
         </nav>
-        <!-- Barra de Progreso -->
-        <div id="progress-bar-container" class="w-full bg-gray-800 h-1">
+        <!-- Barra de Progreso --><div id="progress-bar-container" class="w-full bg-gray-800 h-1">
             <div id="progress-bar-inner" class="h-1 shadow-lg shadow-purple-500/30" style="width: 0%;"></div>
         </div>
     </header>
 
-    <!-- Contenedor Principal de Slides -->
-    <main class="flex-grow w-full pt-16 pb-16 overflow-hidden"> <!-- Padding para header y footer -->
-        <div id="slide-container"> <!-- Contenedor relativo para slides absolutos -->
-
-            <!-- Slide 0: Bienvenida -->
-            <section class="slide slide-active" data-title="Intro">
+    <!-- Contenedor Principal de Slides --><main class="flex-grow w-full pt-16 pb-16 overflow-hidden"> <!-- Padding para header y footer --><div id="slide-container"> <!-- Contenedor relativo para slides absolutos --><!-- Slide 0: Bienvenida --><section class="slide slide-active" data-title="Intro">
                 <div class="w-full max-w-4xl p-10 text-center">
                     <h2 class="text-xl font-semibold text-purple-400 mb-2">TALLER COMF-IA</h2>
                     <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6">Crea una App Web en 10 Min:</h1>
@@ -151,10 +137,7 @@
                 </div>
             </section>
 
-            <!-- SLIDE DE VIDEO ELIMINADO -->
-
-            <!-- Slide 1: El Objetivo (antes 2) -->
-            <section class="slide" data-title="Intro">
+            <!-- SLIDE DE VIDEO ELIMINADO --><!-- Slide 1: El Objetivo (antes 2) --><section class="slide" data-title="Intro">
                 <div class="w-full max-w-5xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Nuestro Objetivo de Hoy</h2>
                     <div class="flex flex-col md:flex-row items-center bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
@@ -174,8 +157,7 @@
                 </div>
             </section>
 
-            <!-- Slide 2: La Agenda (antes 3) -->
-            <section class="slide" data-title="Intro">
+            <!-- Slide 2: La Agenda (antes 3) --><section class="slide" data-title="Intro">
                 <div class="w-full max-w-4xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-10 text-center">Agenda del Taller (1 Hora)</h2>
                     <ol class="list-decimal list-inside space-y-5 text-xl text-gray-300">
@@ -195,8 +177,7 @@
                 </div>
             </section>
             
-            <!-- Slide 3: Componente 1 - Google Sheets (antes 4) -->
-            <section class="slide" data-title="Componentes">
+            <!-- Slide 3: Componente 1 - Google Sheets (antes 4) --><section class="slide" data-title="Componentes">
                 <div class="w-full max-w-5xl p-10">
                      <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Componente 1: Google Sheets</h2>
                      <div class="flex flex-col md:flex-row items-center">
@@ -213,13 +194,12 @@
                 </div>
             </section>
 
-            <!-- Slide 4: Componente 2 - Apps Script (antes 5) -->
-            <section class="slide" data-title="Componentes">
+            <!-- Slide 4: Componente 2 - Apps Script (antes 5) --><section class="slide" data-title="Componentes">
                 <div class="w-full max-w-5xl p-10">
                      <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Componente 2: Apps Script</h2>
                      <div class="flex flex-col md:flex-row items-center">
                          <div class="md:w-1/2 p-4">
-                             <img src="https://www.solvetic.com/uploads/monthly_11_2014/tutorials-2308-0-91146200-1417046587.jpg" alt="Apps Script" class="rounded-lg shadow-2xl w-full border-4 border-pink-500/50 object-cover" style="height: 350px;">
+                             <img src="https://i.imgur.com/L8zaVm5.png" alt="Apps Script" class="rounded-lg shadow-2xl w-full border-4 border-pink-500/50 object-cover" style="height: 350px;">
                          </div>
                          <div class="md:w-1/2 p-4 text-gray-300 space-y-4">
                              <p class="text-2xl font-semibold text-white">"El Cerebro y los Cables"</p>
@@ -237,14 +217,12 @@
                 </div>
             </section>
 
-            <!-- Slide 5: Componente 3 - Gemini (antes 6) -->
-            <section class="slide" data-title="Componentes">
+            <!-- Slide 5: Componente 3 - Gemini (antes 6) --><section class="slide" data-title="Componentes">
                 <div class="w-full max-w-5xl p-10">
                      <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Componente 3: Gemini (IA)</h2>
                      <div class="flex flex-col md:flex-row items-center">
                          <div class="md:w-1/2 p-4">
-                             <!-- IMAGEN ACTUALIZADA -->
-                             <img src="https://i.imgur.com/L8zaVm5.png" alt="Gemini AI" class="rounded-lg shadow-2xl w-full border-4 border-purple-500/50 object-cover" style="height: 350px;">
+                             <!-- ##### IMAGEN ACTUALIZADA AQUÍ ##### --><img src="https://i.imgur.com/q87SxFH.png" alt="Gemini AI" class="rounded-lg shadow-2xl w-full border-4 border-purple-500/50 object-cover" style="height: 350px;">
                          </div>
                          <div class="md:w-1/2 p-4 text-gray-300 space-y-4">
                              <p class="text-2xl font-semibold text-white">"El Programador Experto"</p>
@@ -256,8 +234,7 @@
                 </div>
             </section>
 
-            <!-- Slide 6: Demo - Paso 1 (antes 7) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 6: Demo - Paso 1 (antes 7) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-5xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Demo: Paso 1 - Preparar la Base</h2>
                     <div class="flex flex-col md:flex-row items-center bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
@@ -284,8 +261,7 @@
                 </div>
             </section>
             
-            <!-- Slide 7: Demo - Paso 2 (antes 8) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 7: Demo - Paso 2 (antes 8) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-4xl p-10 text-center">
                     <h2 class="text-4xl font-bold text-gradient mb-8">Demo: Paso 2 - El "Prompt Mágico"</h2>
                     <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Ahora, vamos a Gemini y le pedimos el código usando una estructura clara y profesional.</p>
@@ -295,8 +271,7 @@
                 </div>
             </section>
 
-            <!-- Slide 8: Demo - El Prompt (antes 9) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 8: Demo - El Prompt (antes 9) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-6xl p-4 md:p-10 overflow-y-auto" style="max-height: 90vh;">
                     <h2 class="text-4xl font-bold text-gradient mb-6 text-center">Demo: El "Prompt Mágico" para Gemini</h2>
                     <p class="text-center text-lg text-gray-400 mb-6">Lo más importante es pedir las cosas con claridad, en lenguaje natural.</p>
@@ -329,8 +304,7 @@ Dame el código para dos archivos:
                 </div>
             </section>
 
-            <!-- Slide 9: Demo - Paso 3 (antes 10) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 9: Demo - Paso 3 (antes 10) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-5xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Demo: Paso 3 - Copiar y Pegar</h2>
                     <div class="flex flex-col md:flex-row items-center bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
@@ -360,8 +334,7 @@ Dame el código para dos archivos:
                 </div>
             </section>
             
-            <!-- Slide 10: Demo - Paso 4 (antes 11) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 10: Demo - Paso 4 (antes 11) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-5xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Demo: Paso 4 - Desplegar</h2>
                     <div class="flex flex-col md:flex-row items-center bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
@@ -394,8 +367,7 @@ Dame el código para dos archivos:
                 </div>
             </section>
 
-            <!-- Slide 11: Demo - ¡Posible Error y Solución! (antes 12) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 11: Demo - ¡Posible Error y Solución! (antes 12) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-6xl p-4 md:p-10 overflow-y-auto" style="max-height: 90vh;">
                     <h2 class="text-4xl font-bold text-gradient mb-6 text-center">¡Posible Error y Solución! (Depuración)</h2>
                     <p class="text-center text-lg text-gray-400 mb-6">¿Qué pasa si el formulario <strong class="text-red-400">no guarda</strong> y ves un error `e.parameter` en la consola?</p>
@@ -446,8 +418,7 @@ function guardarDatos(datos) {
                 </div>
             </section>
             
-            <!-- Slide 12: Resumen del Flujo (antes 13) -->
-            <section class="slide" data-title="Demo">
+            <!-- Slide 12: Resumen del Flujo (antes 13) --><section class="slide" data-title="Demo">
                 <div class="w-full max-w-5xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-8 text-center">Resumen del Flujo de Datos</h2>
                     <p class="text-center text-lg text-gray-400 mb-6">Lo que acabamos de construir:</p>
@@ -469,8 +440,7 @@ function guardarDatos(datos) {
                 </div>
             </section>
 
-            <!-- Slide 13: El Poder del Prompt (antes 14) -->
-            <section class="slide" data-title="Conclusión">
+            <!-- Slide 13: El Poder del Prompt (antes 14) --><section class="slide" data-title="Conclusión">
                 <div class="w-full max-w-5xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-8 text-center">El Verdadero Poder: El Prompt</h2>
                     <div class="flex flex-col md:flex-row items-center bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
@@ -492,8 +462,7 @@ function guardarDatos(datos) {
                 </div>
             </section>
 
-            <!-- Slide 14: Conclusiones (antes 15) -->
-            <section class="slide" data-title="Conclusión">
+            <!-- Slide 14: Conclusiones (antes 15) --><section class="slide" data-title="Conclusión">
                 <div class="w-full max-w-4xl p-10">
                     <h2 class="text-4xl font-bold text-gradient mb-10 text-center">Conclusiones</h2>
                     <ul class="space-y-6">
@@ -516,8 +485,7 @@ function guardarDatos(datos) {
                 </div>
             </section>
 
-            <!-- Slide 15: Preguntas (antes 16) -->
-            <section class="slide" data-title="Final">
+            <!-- Slide 15: Preguntas (antes 16) --><section class="slide" data-title="Final">
                 <div class="w-full max-w-4xl p-10 text-center">
                     <h1 class="text-7xl font-extrabold text-gradient mb-8">¿Preguntas?</h1>
                     <p class="text-2xl text-gray-400 mb-4">¡Muchas gracias por tu participación!</p>
@@ -528,8 +496,7 @@ function guardarDatos(datos) {
                 </div>
             </section>
             
-            <!-- Slide 16: Certificado (antes 17) -->
-            <section class="slide" data-title="Final">
+            <!-- Slide 16: Certificado (antes 17) --><section class="slide" data-title="Final">
                 <div class="w-full max-w-4xl p-10 text-center">
                     <h1 class="text-5xl font-extrabold text-gradient mb-8">Certificado de Participación</h1>
                     <p class="text-xl text-gray-400 mb-10">Haz clic en el enlace para generar tu certificado:</p>
@@ -546,15 +513,13 @@ function guardarDatos(datos) {
         </div>
     </main>
 
-    <!-- Navegación Inferior Fija (Efecto "Vidrio" sutil) -->
-    <footer class="w-full fixed bottom-0 left-0 bg-gray-950/70 backdrop-blur-md p-4 z-50 border-t border-gray-800/70">
+    <!-- Navegación Inferior Fija (Efecto "Vidrio" sutil) --><footer class="w-full fixed bottom-0 left-0 bg-gray-950/70 backdrop-blur-md p-4 z-50 border-t border-gray-800/70">
         <div class="container mx-auto max-w-7xl flex justify-between items-center">
             <button id="prev-slide" class="bg-purple-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-purple-700 disabled:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
                 Anterior
             </button>
             <div id="slide-counter" class="text-lg font-medium text-gray-300">
-                <!-- CONTADOR ACTUALIZADO -->
-                Slide 1 / 17
+                <!-- CONTADOR ACTUALIZADO -->Slide 1 / 17
             </div>
             <button id="next-slide" class="bg-purple-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-purple-700 disabled:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
                 Siguiente
@@ -708,10 +673,19 @@ function guardarDatos(datos) {
 
             // Navegación con teclado (flechas)
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    e.preventDefault(); // Prevenir scroll con barra espaciadora
                     showSlide(currentSlide + 1);
                 } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
                     showSlide(currentSlide - 1);
+                } else if (e.key === 'f' || e.key === 'F') {
+                     e.preventDefault(); // Prevenir búsqueda
+                     if (isFullscreen()) {
+                        closeFullscreen();
+                    } else {
+                        openFullscreen();
+                    }
                 }
             });
 
